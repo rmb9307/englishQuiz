@@ -1,12 +1,20 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
+import {partsOfSpeech} from '../../api/quizQuestions';
+import NewQuestions from './QuizNewQuestions';
 
-const QuizPage = ({quiz}) => {
-    console.log(quiz);
+const QuizPage = ({quiz}) => {   
+    const questions = partsOfSpeech[quiz];
     return (
-        <h1>Quiz Page</h1>
 
+        <div>
+            <h1>{quiz}</h1>
+            <h4>请点击下面句子中的{quiz}:</h4>
+            <div height="50px"></div>
+            <NewQuestions questions={questions}/>
+        </div> 
     );
+
 };
 
 QuizPage.propTypes = {
@@ -14,9 +22,9 @@ QuizPage.propTypes = {
     quizQuestions: PropTypes.array
 };
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
     return {
-        quiz: state.quiz
+        quiz: ownProps.params.id
     };
 }
 

@@ -11,7 +11,7 @@ export const partsOfSpeech =  {
             {
                 1: {
                     q: 'I want to go to the Wizarding World of Harry Potter.',
-                    a: ['want', 'to go']
+                    a: ['want', 'go']
                 }
             },
             {
@@ -24,7 +24,7 @@ export const partsOfSpeech =  {
             {
                 3: {
                     q: 'Superman can fly.',
-                    a: ['can fly']
+                    a: ['can', 'fly']
                 }
                 
             },
@@ -37,13 +37,13 @@ export const partsOfSpeech =  {
             {
                 5: {
                     q: 'He wanted to study literature, but his parents told him to study engineering.',
-                    a: ['wanted', 'to study', 'told', 'to study']
+                    a: ['wanted', 'study', 'told', 'study']
                 }
             },
             {
                 6: {
                     q: 'She can\'t find her glasses.',
-                    a: ['can\'t find']
+                    a: ['can\'t', 'find']
                 }
                 
             },

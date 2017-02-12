@@ -27,17 +27,14 @@ export default class NewQuestions extends React.Component {
     }
 
     handleContinue() {
-        
-        // let answerKeys = Object.keys(this.props.questions);
+        console.log('clickedWords before handleContinue: ', this.state.clickedWords);
         let answers = this.state.question[Object.keys(this.state.question)[0]].a;
-        console.log('answers', answers);
-        // store info on which answers were clicked
-        console.log('this.state.clickedWords', this.state.clickedWords);
-        // set state to update score
-        // reset the question
-        // making sure all words are black again
-
+        this.state.clickedWords.forEach((word, index) => { // 'word' parameter looks like {id: 1, word: 'word'}
+            console.log('word: ', word, 'index: ', index);
+            this.toggleTextColor(word.id);
+        });
         this.randomQuestion();
+        console.log('clickedWords after handleContinue: ', this.state.clickedWords);
     }
 
     randomQuestion() {
@@ -58,23 +55,22 @@ export default class NewQuestions extends React.Component {
         }
     }
 
-    toggleTextColor(id) {
+    toggleTextColor(id) {   // changes color to indicate selected, also updates this.state.clickedWords
         if(document.getElementById(id).style.color !== 'blue') {
             document.getElementById(id).style.color = 'blue';
-        } else {
-            document.getElementById(id).style.color = 'black';
-        }
-        if (document.getElementById(id).style.color === 'blue') {
-            let clickedWords = this.state.clickedWords;
-            clickedWords.push(document.getElementById(id).innerHTML);
+            let clickedWords = this.state.clickedWords; // remove word from this.state.clickedWords
+            clickedWords.push({id: id, word: document.getElementById(id).innerHTML});
             this.setState({
                 clickedWords: clickedWords
             });
-        } else if (document.getElementById(id).style.color === 'black') {
-            //slice out the word from clickedWords by getElementById
-            //(start, deletecount)
-            let clickedWords = this.state.clickedWords;
-            clickedWords.splice(id, 1);
+        } else {
+            document.getElementById(id).style.color = 'black';
+            let clickedWords = this.state.clickedWords; // add word to this.state.clickedWords
+            clickedWords.forEach((obj) => {
+                if (obj.id === id) {
+                    clickedWords.splice(clickedWords.indexOf(obj), 1);
+                }
+            });
             this.setState({
                 clickedWords: clickedWords
             });

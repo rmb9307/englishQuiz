@@ -10,18 +10,36 @@ export default class NewQuestions extends React.Component {
         this.state = {
             score: 0,
             question: '',
-            questionsAsked: {}
+            questionsAsked: {},
+            clickedWords: []
         };
 
+        this.handleContinue = this.handleContinue.bind(this);
         this.randomQuestion = this.randomQuestion.bind(this);
         this.toggleTextColor = this.toggleTextColor.bind(this);
     }
     
-    componentDidMount() { /* eslint react/no-did-mount-set-state: 0 */
+    componentWillMount() { /* eslint react/no-did-mount-set-state: 0 */
         this.setState({
             question: this.randomQuestion(),
             questionsAsked: {}
         });
+    }
+
+    handleContinue() {
+        
+        // let answerKeys = Object.keys(this.props.questions);
+        let answers = [];
+        for (let key in this.props.questions) {
+            answers.push(this.props.questions[key][key].a);
+        }
+        // store info on which answers were clicked
+
+        // set state to update score
+        // reset the question
+        // making sure all words are black again
+
+        this.randomQuestion();
     }
 
     randomQuestion() {
@@ -48,10 +66,17 @@ export default class NewQuestions extends React.Component {
         } else {
             document.getElementById(id).style.color = 'black';
         }
+        if (document.getElementById(id).style.color === 'blue') {
+            console.log('this.state.clickedWords', this.state.clickedWords);
+            let clickedWords = this.state.clickedWords;
+            clickedWords.push(document.getElementById(id).innerHTML);
+            this.setState({
+                clickedWords: clickedWords
+            });
+        }
+        console.log(this.state.clickedWords);
     }
 
-    //---------------
-    
     render() {
         
 
@@ -64,10 +89,10 @@ export default class NewQuestions extends React.Component {
                         <div>
                             <p> {this.state.question[idNum].q.split(" ").map((word, index) => {
                                     return (
-                                        <span key={index} id={index} onClick={()=>this.toggleTextColor(index)}>{word + ' '}</span>
+                                        <span key={index} id={index} className="questionWords" onClick={()=>this.toggleTextColor(index)}>{word + ' '}</span>
                                     );
                                 })}</p>
-                            <button className="btn btn-primary" onClick={this.randomQuestion}>继续</button>
+                            <button className="btn btn-primary" onClick={this.handleContinue}>继续</button>
                         </div>
                     :
                         <p>reached 8, will show quiz results, a link to learn more about that part of speech</p>

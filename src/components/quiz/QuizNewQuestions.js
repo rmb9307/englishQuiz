@@ -29,12 +29,10 @@ export default class NewQuestions extends React.Component {
     handleContinue() {
         
         // let answerKeys = Object.keys(this.props.questions);
-        let answers = [];
-        for (let key in this.props.questions) {
-            answers.push(this.props.questions[key][key].a);
-        }
+        let answers = this.state.question[Object.keys(this.state.question)[0]].a;
+        console.log('answers', answers);
         // store info on which answers were clicked
-
+        console.log('this.state.clickedWords', this.state.clickedWords);
         // set state to update score
         // reset the question
         // making sure all words are black again
@@ -67,14 +65,20 @@ export default class NewQuestions extends React.Component {
             document.getElementById(id).style.color = 'black';
         }
         if (document.getElementById(id).style.color === 'blue') {
-            console.log('this.state.clickedWords', this.state.clickedWords);
             let clickedWords = this.state.clickedWords;
             clickedWords.push(document.getElementById(id).innerHTML);
             this.setState({
                 clickedWords: clickedWords
             });
+        } else if (document.getElementById(id).style.color === 'black') {
+            //slice out the word from clickedWords by getElementById
+            //(start, deletecount)
+            let clickedWords = this.state.clickedWords;
+            clickedWords.splice(id, 1);
+            this.setState({
+                clickedWords: clickedWords
+            });
         }
-        console.log(this.state.clickedWords);
     }
 
     render() {

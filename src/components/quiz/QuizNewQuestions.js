@@ -27,14 +27,16 @@ export default class NewQuestions extends React.Component {
     }
 
     handleContinue() {
-        console.log('clickedWords before handleContinue: ', this.state.clickedWords);
         let answers = this.state.question[Object.keys(this.state.question)[0]].a;
-        this.state.clickedWords.forEach((word, index) => { // 'word' parameter looks like {id: 1, word: 'word'}
-            console.log('word: ', word, 'index: ', index);
-            this.toggleTextColor(word.id);
+        // a delete array instead of forEach 
+        let deleteArray = [];
+        this.state.clickedWords.forEach((wordObj, index) => { // 'word' parameter looks like {id: 1, word: 'word'}
+            deleteArray.push(wordObj);
         });
+        for(let i = 0; i < deleteArray.length; i++) {
+            this.toggleTextColor(deleteArray[i].id);
+        }
         this.randomQuestion();
-        console.log('clickedWords after handleContinue: ', this.state.clickedWords);
     }
 
     randomQuestion() {

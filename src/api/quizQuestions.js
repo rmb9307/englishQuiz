@@ -31,7 +31,7 @@ export const partsOfSpeech =  {
             {
                 4: {
                     q: 'My mother was born in India.',
-                    a: ['was born']
+                    a: ['was', 'born']
                 }
             },
             {
@@ -64,19 +64,19 @@ export const partsOfSpeech =  {
             {
                 1: {
                     q: 'Nick borrowed mom\'s car to visit Grandma.',
-                    a: ['Nick', 'mom\s', 'car', 'Grandma']
+                    a: ['Nick', 'mom\'s', 'car', 'Grandma']
                 }
 
             },
             {
                 2: {
-                    q: 'Jenna bought her dogs new toys',
+                    q: 'Jenna bought her dogs new toys.',
                     a: ['Jenna', 'dogs', 'toys']
                 }
             },
             {
                 3: {
-                    q: 'Charlie jumped over the fence to run away from the police',
+                    q: 'Charlie jumped over the fence to run away from the police.',
                     a: ['Charlie', 'fence', 'police']
                 }
             },

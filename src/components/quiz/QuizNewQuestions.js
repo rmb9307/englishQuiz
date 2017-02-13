@@ -9,6 +9,7 @@ export default class NewQuestions extends React.Component {
 
         this.state = {
             score: 0,
+            outOf: 0,
             question: '',
             questionsAsked: {},
             clickedWords: []
@@ -27,8 +28,31 @@ export default class NewQuestions extends React.Component {
     }
 
     handleContinue() {
+        // 1. get the score for previous question
         let answers = this.state.question[Object.keys(this.state.question)[0]].a;
-        // a delete array instead of forEach 
+
+        console.log('answers: ', answers);
+        console.log('clickedWords', this.state.clickedWords);
+
+        let outOf = this.state.outOf;
+        outOf = outOf + answers.length;
+        console.log('outOf', outOf);
+
+        // compare this.state.clickedWords to answers
+        let score = this.state.score;
+        this.state.clickedWords.forEach((word, index) => {
+            console.log('forEach index: ', index, '----------');
+            word = word.word.replace(/[ ?.,;:]/g, ''); 
+            console.log('word', word);
+            console.log('answers.indexOf(word)', answers.indexOf(word));
+            if (answers.indexOf(word) !== -1) {   
+                score++;
+                console.log('score immediately after increment in loop', score);
+            }
+            //also pop off word from answers array so you doon't count it more than once
+        });
+
+        // 2. clear the clickedWords from previous question
         let deleteArray = [];
         this.state.clickedWords.forEach((wordObj, index) => { // 'word' parameter looks like {id: 1, word: 'word'}
             deleteArray.push(wordObj);
@@ -36,7 +60,19 @@ export default class NewQuestions extends React.Component {
         for(let i = 0; i < deleteArray.length; i++) {
             this.toggleTextColor(deleteArray[i].id);
         }
-        this.randomQuestion();
+
+        this.setState({
+            outOf: outOf, 
+            score: score
+        }, () => {
+            console.log('ASYNC outOf: ', this.state.outOf, 'score: ', this.state.score);
+            this.randomQuestion();
+        });
+
+
+
+        // // 3. get the next question
+        // this.randomQuestion();
     }
 
     randomQuestion() {
@@ -57,7 +93,7 @@ export default class NewQuestions extends React.Component {
         }
     }
 
-    toggleTextColor(id) {   // changes color to indicate selected, also updates this.state.clickedWords
+    toggleTextColor(id) {   // changes color to indicate selected, also stores which words are clicked
         if(document.getElementById(id).style.color !== 'blue') {
             document.getElementById(id).style.color = 'blue';
             let clickedWords = this.state.clickedWords; // remove word from this.state.clickedWords
@@ -81,7 +117,6 @@ export default class NewQuestions extends React.Component {
 
     render() {
         
-
         let idNum = Object.keys(this.state.question)[0];
 
         return (
@@ -97,7 +132,7 @@ export default class NewQuestions extends React.Component {
                             <button className="btn btn-primary" onClick={this.handleContinue}>继续</button>
                         </div>
                     :
-                        <p>reached 8, will show quiz results, a link to learn more about that part of speech</p>
+                        <QuizResult score={this.state.score} questions={this.props.questions}/>
                 }
                     
                 

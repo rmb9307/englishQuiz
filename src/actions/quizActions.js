@@ -1,6 +1,5 @@
 import * as types from './actionTypes';
-import {partsOfSpeech} from '../api/quizQuestions';
-// import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';
+import {partsOfSpeech} from '../data/quizQuestions';
 
 
 export function setQuiz(quiz) {

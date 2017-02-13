@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { Link, browserHistory } from 'react-router';
-import { partsOfSpeech } from '../../api/quizQuestions';
+import { partsOfSpeech } from '../../data/quizQuestions';
 import * as quizActions from '../../actions/quizActions';
 
 //() => this.props.actions.setQuiz(quizKey)}>{quizKey

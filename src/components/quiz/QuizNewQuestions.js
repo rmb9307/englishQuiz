@@ -111,7 +111,7 @@ export default class NewQuestions extends React.Component {
                     Object.keys(this.state.questionsAsked).length <  this.props.questions.length ?
                         <div>
                             <h4  className="text-center">请点击下面句子中的{this.props.quiz}:</h4>
-                            <p  className="text-center"> {this.state.question[idNum].q.split(" ").map((word, index) => {
+                            <p  className="text-center questions"> {this.state.question[idNum].q.split(" ").map((word, index) => {
                                     return (
                                         <span key={index} id={index} className="questionWords" onClick={()=>this.toggleTextColor(index)}>{word + ' '}</span>
                                     );

@@ -5,11 +5,10 @@ import LoadingDots from './LoadingDots';
 const Header = ({loading}) => {
     return (
         <nav>
-            <IndexLink to="/" activeClassName="active">Home</IndexLink>
+            <IndexLink to="/" activeClassName="active">主页</IndexLink>
             {" | "}
-            <Link to="/courses" activeClassName="active">Courses</Link>
-            {" | "}
-            <Link to="/about" activeClassName="active">About</Link>
+            <Link to="/about" activeClassName="active">练习
+</Link>
             {loading && <LoadingDots interval={100} dots={20}/>}
         </nav>
     );

@@ -13,3 +13,9 @@ a.active {
 nav {
     padding-top: 20px;
 }
+
+p.questions {
+    font-size: 30px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}

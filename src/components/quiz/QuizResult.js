@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router';
 // Passed in as props from NewQuestions: score={this.state.score}, outOf={this.state.outOf}, questions={this.props.questions}
 
 
@@ -40,7 +40,7 @@ export default class QuizResult extends React.Component {
                 </table>
                 
                 <div className="text-right">
-                    <button className="btn btn-primary" onClick={this.handleContinue}>更多练习...</button>
+                    <Link to="about"><button className="btn btn-primary" onClick={this.handleContinue}>更多练习...</button></Link>
                 </div>
             </div> 
         );    

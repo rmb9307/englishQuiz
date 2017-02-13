@@ -7,11 +7,10 @@ const QuizPage = ({quiz}) => {
     const questions = partsOfSpeech[quiz];
     return (
 
-        <div>
+        <div className="text-center">
             <h1>{quiz}</h1>
-            <h4>请点击下面句子中的{quiz}:</h4>
             <div height="50px"></div>
-            <NewQuestions questions={questions}/>
+            <NewQuestions quiz={quiz} questions={questions}/>
         </div> 
     );
 

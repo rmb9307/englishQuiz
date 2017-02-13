@@ -30,26 +30,18 @@ export default class NewQuestions extends React.Component {
     handleContinue() {
         // 1. get the score for previous question
         let answers = this.state.question[Object.keys(this.state.question)[0]].a;
-
-        console.log('answers: ', answers);
-        console.log('clickedWords', this.state.clickedWords);
-
+        
         let outOf = this.state.outOf;
         outOf = outOf + answers.length;
-        console.log('outOf', outOf);
 
         // compare this.state.clickedWords to answers
         let score = this.state.score;
         this.state.clickedWords.forEach((word, index) => {
-            console.log('forEach index: ', index, '----------');
             word = word.word.replace(/[ ?.,;:]/g, ''); 
-            console.log('word', word);
-            console.log('answers.indexOf(word)', answers.indexOf(word));
             if (answers.indexOf(word) !== -1) {   
                 score++;
-                console.log('score immediately after increment in loop', score);
+                answers.splice(answers.indexOf(word), 1);
             }
-            //also pop off word from answers array so you doon't count it more than once
         });
 
         // 2. clear the clickedWords from previous question
@@ -65,14 +57,8 @@ export default class NewQuestions extends React.Component {
             outOf: outOf, 
             score: score
         }, () => {
-            console.log('ASYNC outOf: ', this.state.outOf, 'score: ', this.state.score);
             this.randomQuestion();
         });
-
-
-
-        // // 3. get the next question
-        // this.randomQuestion();
     }
 
     randomQuestion() {
@@ -124,6 +110,7 @@ export default class NewQuestions extends React.Component {
                 {
                     Object.keys(this.state.questionsAsked).length <  this.props.questions.length ?
                         <div>
+                            <h4>请点击下面句子中的{this.props.quiz}:</h4>
                             <p> {this.state.question[idNum].q.split(" ").map((word, index) => {
                                     return (
                                         <span key={index} id={index} className="questionWords" onClick={()=>this.toggleTextColor(index)}>{word + ' '}</span>
@@ -132,7 +119,7 @@ export default class NewQuestions extends React.Component {
                             <button className="btn btn-primary" onClick={this.handleContinue}>继续</button>
                         </div>
                     :
-                        <QuizResult score={this.state.score} questions={this.props.questions}/>
+                        <QuizResult score={this.state.score} outOf={this.state.outOf} questions={this.props.questions}/>
                 }
                     
                 

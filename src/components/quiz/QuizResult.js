@@ -18,15 +18,18 @@ export default class QuizResult extends React.Component {
         }
         return (
             <div>
-                <h1>测验得分: {this.props.score} / {this.props.outOf} </h1>
-                <p>正确答案</p>
+                <h1  className="text-center">测验得分: {this.props.score} / {this.props.outOf} </h1>
+                <h4>正确答案</h4>
                 <table>
-                    
+                    <thead>
+                        <th width="515px">句子</th>
+                        <th>有什么{this.props.quiz}</th>
+                    </thead>
                     <tbody>
                         {
                             questions.map((question, index) => {
                                 return (
-                                    <tr key={index}> 
+                                    <tr key={index} height="30px"> 
                                         <td>{question}</td>
                                         <td>{answers[index].join(', ').toString()}</td>
                                     </tr>
@@ -36,7 +39,9 @@ export default class QuizResult extends React.Component {
                     </tbody>
                 </table>
                 
-                <p> To learn more, click links </p>
+                <div className="text-right">
+                    <button className="btn btn-primary" onClick={this.handleContinue}>更多练习...</button>
+                </div>
             </div> 
         );    
     }

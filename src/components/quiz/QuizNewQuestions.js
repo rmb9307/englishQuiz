@@ -30,7 +30,7 @@ export default class NewQuestions extends React.Component {
     handleContinue() {
         // 1. get the score for previous question
         let answers = this.state.question[Object.keys(this.state.question)[0]].a;
-        
+
         let outOf = this.state.outOf;
         outOf = outOf + answers.length;
 
@@ -106,20 +106,22 @@ export default class NewQuestions extends React.Component {
         let idNum = Object.keys(this.state.question)[0];
 
         return (
-            <div className="text-center">
+            <div>
                 {
                     Object.keys(this.state.questionsAsked).length <  this.props.questions.length ?
                         <div>
-                            <h4>请点击下面句子中的{this.props.quiz}:</h4>
-                            <p> {this.state.question[idNum].q.split(" ").map((word, index) => {
+                            <h4  className="text-center">请点击下面句子中的{this.props.quiz}:</h4>
+                            <p  className="text-center"> {this.state.question[idNum].q.split(" ").map((word, index) => {
                                     return (
                                         <span key={index} id={index} className="questionWords" onClick={()=>this.toggleTextColor(index)}>{word + ' '}</span>
                                     );
                                 })}</p>
-                            <button className="btn btn-primary" onClick={this.handleContinue}>继续</button>
+                            <div className="text-center">
+                                <button className="btn btn-primary" onClick={this.handleContinue}>继续</button>
+                            </div>
                         </div>
                     :
-                        <QuizResult score={this.state.score} outOf={this.state.outOf} questions={this.props.questions}/>
+                        <QuizResult score={this.state.score} outOf={this.state.outOf} quiz={this.props.quiz} questions={this.props.questions}/>
                 }
                     
                 

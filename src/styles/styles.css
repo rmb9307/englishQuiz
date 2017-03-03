@@ -6,9 +6,12 @@
     margin: 0 auto;
 }
 
+
+
 a.active {
     color: orange;
 }
+
 
 nav {
     padding-top: 20px;
@@ -18,4 +21,10 @@ p.questions {
     font-size: 30px;
     padding-top: 80px;
     padding-bottom: 80px;
+    cursor: pointer;
+    color: black;
+}
+
+p.active {
+    color: orange;
 }

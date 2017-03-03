@@ -21,16 +21,18 @@ export default class NewQuestions extends React.Component {
     }
     
     componentWillMount() { /* eslint react/no-did-mount-set-state: 0 */
+        let firstQuestion = this.randomQuestion();
         this.setState({
-            question: this.randomQuestion(),
-            questionsAsked: {}
+            question: firstQuestion,
+            questionsAsked: firstQuestion
         });
     }
 
+    
+
     handleContinue() {
         // 1. get the score for previous question
-        let answers = this.state.question[Object.keys(this.state.question)[0]].a;
-
+        let answers = this.state.question[Object.keys(this.state.question)[0]].a.slice();
         let outOf = this.state.outOf;
         outOf = outOf + answers.length;
 
@@ -40,7 +42,7 @@ export default class NewQuestions extends React.Component {
             word = word.word.replace(/[ ?.,;:]/g, ''); 
             if (answers.indexOf(word) !== -1) {   
                 score++;
-                answers.splice(answers.indexOf(word), 1);
+                answers.splice(answers.indexOf(word), 1); //is this deletting from the actual state's answers array?
             }
         });
 
@@ -59,6 +61,7 @@ export default class NewQuestions extends React.Component {
         }, () => {
             this.randomQuestion();
         });
+        console.log('this.state.clickedWords____', this.state.clickedWords, 'this.state.questionsAsked____', this.state.questionsAsked);
     }
 
     randomQuestion() {

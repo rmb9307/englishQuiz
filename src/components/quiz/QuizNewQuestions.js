@@ -61,7 +61,7 @@ export default class NewQuestions extends React.Component {
         }, () => {
             this.randomQuestion();
         });
-        console.log('this.state.clickedWords____', this.state.clickedWords, 'this.state.questionsAsked____', this.state.questionsAsked);
+        console.log('this.props.questions:__', this.props.questions, 'this.props.questions.length:__', this.props.questions.length);
     }
 
     randomQuestion() {
@@ -111,7 +111,7 @@ export default class NewQuestions extends React.Component {
         return (
             <div>
                 {
-                    Object.keys(this.state.questionsAsked).length <  this.props.questions.length ?
+                    Object.keys(this.state.questionsAsked).length <  this.props.questions.length  ?
                         <div>
                             <h4  className="text-center">请点击下面句子中的{this.props.quiz}:</h4>
                             <p  className="text-center questions"> {this.state.question[idNum].q.split(" ").map((word, index) => {

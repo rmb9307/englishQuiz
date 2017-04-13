@@ -1,8 +1,12 @@
+'use strict';
+
 import express from 'express';
 import webpack from 'webpack';
 import path from 'path';
 import config from '../webpack.config.dev';
 import open from 'open';
+import passport from 'passport';
+import session from 'express-session';
 
 /* eslint-disable no-console */
 
@@ -17,9 +21,25 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));
 
+app.use(session({secret: 'willThinkOfOneLater'}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser((user,done) => {
+  done(null, user);
+});
+
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
+
+app.use('/api', require('./api'));
+
 app.get('*', function(req, res) {
   res.sendFile(path.join( __dirname, '../src/index.html'));
 });
+
+
 
 app.listen(port, function(err) {
   if (err) {

@@ -35,7 +35,7 @@ function sync() {
           }
           sync();
         });
-    })
+    });
 }
 
 db.didSync = sync();

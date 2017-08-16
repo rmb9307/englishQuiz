@@ -1,20 +1,33 @@
-#app {
-    font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #4d4d4d;
-    min-width: 550px;
-    max-width: 850px;
-    margin: 0 auto;
+body {
+    background-image: url("https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?dpr=1.5&auto=format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=");
 }
 
+#app {
+    font-family: 'Playfair Display', serif;
+    /*font: 20px 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+    font-size: 20px;
+    min-width: 550px;
+    max-width: 1150px;
+    margin: 0 auto;
+}
 
 
 a.active {
     color: orange;
 }
 
+h1 {
+    font-size: 35px;
+}
+
+#homePage {
+    justify-content: center;
+    align-items: center;
+}
 
 nav {
     padding-top: 20px;
+    font-size: 16px;
 }
 
 p.questions {
@@ -27,4 +40,8 @@ p.questions {
 
 p.active {
     color: orange;
+}
+
+.spacer {
+    height: 160px;
 }

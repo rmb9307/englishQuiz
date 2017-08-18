@@ -120,7 +120,7 @@ export default class NewQuestions extends React.Component {
                                     );
                                 })}</p>
                             <div className="text-center">
-                                <button className="btn btn-primary" onClick={this.handleContinue}>继续</button>
+                                <button className="btn" onClick={this.handleContinue}>继续</button>
                             </div>
                         </div>
                     :

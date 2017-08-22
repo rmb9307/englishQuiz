@@ -38,10 +38,26 @@ p.questions {
     color: black;
 }
 
+p.signup-link {
+    font-size: 12px;
+} 
+
 p.active {
     color: orange;
 }
 
 .spacer {
     height: 160px;
+}
+
+.spacer2 {
+    height: 120px;
+}
+
+#signup-link {
+    font-size: 12px;
+}
+
+#subject-list {
+    border-left: 2px solid;
 }

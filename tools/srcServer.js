@@ -7,6 +7,9 @@ import config from '../webpack.config.dev';
 import open from 'open';
 import passport from 'passport';
 import session from 'express-session';
+import postgres from 'pg';
+
+const db = require('../src/db');
 
 /* eslint-disable no-console */
 

@@ -4,7 +4,7 @@
   "description": "Made with Starter kit for React and Redux Pluralsight course by Cory House",
   "scripts": {
     "prestart": "babel-node tools/startMessage.js",
-    "start": "npm-run-all --parallel open:src lint:watch",
+    "start": "npm-run-all --parallel open:src",
     "open:src": "babel-node tools/srcServer.js",
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
     "lint:watch": "npm run lint -- --watch",
@@ -22,6 +22,7 @@
     "babel-polyfill": "6.8.0",
     "bcrypt": "^1.0.2",
     "bluebird": "^3.5.0",
+    "body-parser": "^1.17.2",
     "bootstrap": "3.3.6",
     "colors": "^1.1.2",
     "gulp-gh-pages": "^0.5.4",

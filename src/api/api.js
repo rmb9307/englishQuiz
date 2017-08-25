@@ -7,7 +7,7 @@ const api = module.exports = express.Router();
 const path = require('path');
 
 api
-  .use('/user', require('./user'));
+  .use('/user', require('./userRouter'));
 
 // Console log errors
 api.use((err, req, res, next) => {

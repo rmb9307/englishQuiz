@@ -8,6 +8,7 @@ import open from 'open';
 import passport from 'passport';
 import session from 'express-session';
 import postgres from 'pg';
+import bodyParser from 'body-parser';
 
 const db = require('../src/db');
 
@@ -27,6 +28,9 @@ app.use(require('webpack-hot-middleware')(compiler));
 app.use(session({secret: 'willThinkOfOneLater'}));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 passport.serializeUser((user,done) => {
   done(null, user);

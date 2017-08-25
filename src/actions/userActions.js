@@ -23,11 +23,12 @@ export const logout = () => ({
 
 
 // Dispatchers:
-export const createUser = (email, password) => (dispatch) => {
+export const createUser = ({email, password}) => (dispatch) => {
     console.log('CREATE USER CALLED');
-    axios.post('/api/user')
+    console.log('email in createUser: ', email, '\n', 'password in createUser: ', password);
+    axios.post('/api/user', { email, password })
     .then(response => {
-        response.data;
+        response.json();
     })
     .then(user => {
         dispatch(login(user));

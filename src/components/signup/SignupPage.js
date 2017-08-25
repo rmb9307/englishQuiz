@@ -2,17 +2,18 @@ import React, { PropTypes } from 'react';
 import { browserHistory, Link } from 'react-router';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import colors from 'colors';
 import { createUser } from '../../actions/userActions';
 
 
 class SignupPage extends React.Component {
     constructor(props) {
         super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(email, password) {
-        this.props.dispatch(createUser(email, password));
+        this.props.dispatch(createUser({email, password}));
+        console.log('email: ', email, '\n', 'password: ', password);
     }
     render() {
         return (
@@ -21,18 +22,22 @@ class SignupPage extends React.Component {
                 <div className="jumbotron text-center">
 
                     <h2> 注册 </h2>
-                    <form onSubmit={this.handleSubmit()}>
+                    <form id="signupForm" onSubmit={(event) => {
+                            event.preventDefault();
+                            this.handleSubmit(event.target.email.value, event.target.password.value);
+                            browserHistory.push('/about');
+                        }}>
                         {/*Email input*/}
                         <div className="row">
                             <div className="col-xs-12">
-                                <input placeholder="电子邮件地址" name="email"/>
+                                <input placeholder="电子邮件地址" type="text" name="email" id="signupEmail"/>
                             </div>
                         </div>
 
                         {/*Password input*/}
                         <div className="row">
                             <div className="col-xs-12">
-                                <input placeholder="密码" name="password"/>
+                                <input placeholder="密码" type="text" name="password" id="signupPassword"/>
                             </div>
                         </div>
 

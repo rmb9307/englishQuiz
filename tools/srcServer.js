@@ -7,6 +7,9 @@ import config from '../webpack.config.dev';
 import open from 'open';
 import passport from 'passport';
 import session from 'express-session';
+import postgres from 'pg';
+
+const db = require('../src/db');
 
 /* eslint-disable no-console */
 
@@ -33,7 +36,7 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-app.use('/api', require('./api'));
+app.use('/api', require('../src/api/api'));
 
 app.get('*', function(req, res) {
   res.sendFile(path.join( __dirname, '../src/index.html'));

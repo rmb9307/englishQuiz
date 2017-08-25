@@ -2,8 +2,14 @@
 
 const Sequelize = require('sequelize');
 const db = require('../../db');
+const bcrypt = require('bcrypt');
+const colors = require('colors');
+
 
 const User = db.define('users', {
+    name: {
+        type: Sequelize.STRING
+    },
     email: {
         type: Sequelize.STRING,
         validate: {
@@ -12,7 +18,10 @@ const User = db.define('users', {
     },
     password: {
         type: Sequelize.STRING
+    },
+    completeQuizzes: {
+        type: Sequelize.JSON
     }
 });
 
-export default User;
+module.exports = {User};

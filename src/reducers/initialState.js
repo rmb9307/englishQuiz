@@ -1,6 +1,6 @@
 export default {
     ajaxCallsInProgress: 0,
     quiz: '',
-    completedQuizzes: [],
-    quizQuestions: []
+    quizQuestions: [],
+    user: null
 };

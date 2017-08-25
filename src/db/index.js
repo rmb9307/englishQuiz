@@ -1,4 +1,5 @@
 'use strict';
+const postgres = require('pg');
 const debug = require('debug')('sql');
 const chalk = require('chalk');
 const Sequelize = require('sequelize');
@@ -10,21 +11,17 @@ console.log(chalk.yellow(`Opening database connection to ${url}`));
 
 // create the database instance
 const db = module.exports = new Sequelize(url, {
-  logging: debug //, // export DEBUG=sql in the environment to get SQL queries 
-  //native: true    // lets Sequelize know we can use pg-native for ~30% more speed
+  logging: debug 
 });
 
-// pull in our models
-//require('./models');
-
 // sync the db, creating it if necessary
-function sync() {
+const sync = () => {
   db.sync()
     .then(ok => console.log(`Synced models to db ${url}`))
     .catch(fail => {
       if (process.env.NODE_ENV === 'production') {
         console.error(fail);
-        return; // Don't do this auto-create nonsense in prod
+        return; // Wouldn't do this auto-create in prod
       }
       // Otherwise, do this autocreate nonsense
       console.log(`Creating database ${name}...`);
@@ -36,6 +33,6 @@ function sync() {
           sync();
         });
     });
-}
+};
 
 db.didSync = sync();

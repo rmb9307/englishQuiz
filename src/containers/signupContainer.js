@@ -1,16 +1,20 @@
 'use strict';
 
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import SignupPage from '../components/signup/SignupPage';
-import { createAccount } from '../reducers/signupReducer';
+import { createUser } from '../actions/userActions';
 
 
-const mapStateToProps = () => ({}); 
+const mapStateToProps = ({user}) => ({
+    user
+}); 
 
-const mapDispatchToProps = dispatch => ({
-    createAccount(email, password){
-        dispatch(createAccount(email, password));
-    }
+const mapDispatchToProps = (dispatch) => ({
+    signup: (email, password) => 
+        dispatch(createUser({email, password}))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignupPage);
+
+

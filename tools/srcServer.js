@@ -36,7 +36,7 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-app.use('/api', require('./api'));
+app.use('/api', require('../src/api/api'));
 
 app.get('*', function(req, res) {
   res.sendFile(path.join( __dirname, '../src/index.html'));

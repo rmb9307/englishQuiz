@@ -1,20 +1,27 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { browserHistory, Link } from 'react-router';
+import { connect } from 'react-redux';
+import axios from 'axios';
+import colors from 'colors';
+import { createUser } from '../../actions/userActions';
+
 
 class SignupPage extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    handleSubmit(email, password) {
+        this.props.dispatch(createUser(email, password));
+    }
     render() {
-        console.log('this.props:____', this.props);
         return (
             <div>
                 <div className="spacer2"/>
                 <div className="jumbotron text-center">
 
                     <h2> 注册 </h2>
-                    <form onSubmit={evt => {
-                        evt.preventDefault();
-                        console.log('signup form submitted');
-                        this.props.createAccount(evt.target.email.value, evt.target.password.value);
-                        }}>
+                    <form onSubmit={this.handleSubmit()}>
                         {/*Email input*/}
                         <div className="row">
                             <div className="col-xs-12">
@@ -32,7 +39,7 @@ class SignupPage extends React.Component {
                         {/*Submit button*/}
                         <div className="row">
                             <div className="col-xs-12">
-                                <input className="btn" type="submit"/>
+                                <input className="btn btn-outline-secondary" type="submit"/>
                             </div>
                         </div>
                     </form>     {/* Form onSubmit should send create requests to the database with email and password */}
@@ -43,4 +50,16 @@ class SignupPage extends React.Component {
     }
 }
 
-export default SignupPage;
+SignupPage.propTypes = {
+    signup: PropTypes.func
+};
+
+export default connect()(SignupPage);
+
+
+// {evt => {
+//     evt.preventDefault();
+//     console.log('signup form submitted');
+//     console.log('this.props.signup: ', this.props.signup);
+//     this.props.signup(evt.target.email.value, evt.target.password.value);
+// }

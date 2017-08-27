@@ -28,7 +28,8 @@ export const createUser = ({email, password}) => (dispatch) => {
     console.log('email in createUser: ', email, '\n', 'password in createUser: ', password);
     axios.post('/api/user', { email, password })
     .then(response => {
-        response.json();
+        console.log('response: ', response);
+        response.data;
     })
     .then(user => {
         dispatch(login(user));

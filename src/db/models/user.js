@@ -24,4 +24,4 @@ const User = db.define('users', {
     }
 });
 
-module.exports = {User};
+module.exports = User;

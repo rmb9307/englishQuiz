@@ -61,7 +61,6 @@ export default class NewQuestions extends React.Component {
         }, () => {
             this.randomQuestion();
         });
-        console.log('this.props.questions:__', this.props.questions, 'this.props.questions.length:__', this.props.questions.length);
     }
 
     randomQuestion() {

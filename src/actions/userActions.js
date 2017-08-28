@@ -24,11 +24,8 @@ export const logout = () => ({
 
 // Dispatchers:
 export const createUser = ({email, password}) => (dispatch) => {
-    console.log('CREATE USER CALLED');
-    console.log('email in createUser: ', email, '\n', 'password in createUser: ', password);
     axios.post('/api/user', { email, password })
     .then(response => {
-        console.log('response: ', response);
         response.data;
     })
     .then(user => {

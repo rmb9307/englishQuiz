@@ -2,5 +2,5 @@ export default {
     ajaxCallsInProgress: 0,
     quiz: '',
     quizQuestions: [],
-    user: null
+    user: 'USER'
 };

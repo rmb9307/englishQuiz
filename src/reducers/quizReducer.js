@@ -1,3 +1,5 @@
+'use strict';
+
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
@@ -7,7 +9,7 @@ export default function quizReducer(state = initialState.quiz, action) {
         case types.SET_QUIZ:
             return [
                 ...state,
-                Object.assign({}, action.quiz)
+                Object.assign({}, action.payload.quiz)
             ];
             
         default:

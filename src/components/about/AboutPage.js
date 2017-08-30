@@ -9,22 +9,25 @@ import * as quizActions from '../../actions/quizActions';
 const quizKeys = Object.keys(partsOfSpeech);
 
 class GrammarTests extends React.Component { 
-    constructor() {
-        super();
-        this.state = {
-            grammarTests: Object.keys(partsOfSpeech)
-        };
+    constructor(props) {
+        super(props);
+        this.handleLinkClink = this.handleLinkClink.bind(this);
+    }
+
+    handleLinkClink(quiz) {
+        this.props.dispatch(quizActions.setQuiz(quiz));
     }
 
     render() {
-        console.log('this.state: ', this.state);
         return (
             <div>
                  {
-                    this.state.grammarTests.map((testSubj, index) => {
+                    this.props.grammarTests.map((testSubj, index) => {
                         return (
                             <span key={index} id={index} 
-                            className="grammar-tests"><Link to={`quiz/${index}`} quiz={index} questions={partsOfSpeech[index]}> {testSubj} <br/> </Link></span>
+                            className="grammar-tests"><Link to={`quiz/${index}`} quiz={index} questions={partsOfSpeech[index]} 
+                            onClick={()=>{this.handleLinkClink(index)}}
+                            > {testSubj} <br/> </Link></span>
                         );
                     })
                 }
@@ -33,12 +36,16 @@ class GrammarTests extends React.Component {
     }
 }
 
+const GrammarTestsConnect = connect()(GrammarTests);
+
 class AboutPage extends React.Component {
      constructor(props, context) {
         super(props, context);
         this.state = {
-            grammarTestsVisible: false
+            grammarTestsVisible: false,
+            grammarTests: quizKeys
         };
+        
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -50,13 +57,13 @@ class AboutPage extends React.Component {
         return (
             <div>
                 <div className="spacer"/>
-                <div className="container-fluid"> {/* The main question will be on the left, then a vertical line. On the right side, a list of topics. When you hover on a topic, I will use animation library to reveal sub-topics. */}
+                <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-3">
                             <h1>您想学什么?</h1>
                         </div>
                         <div className="col-sm-3" id="subject-list">
-                            <h4 className="practice-topic" onClick={this.handleClick}>测试你的语法知识  {
+                            <h4 className="practice-topic" onClick={() => this.handleClick()}> 测试你的语法知识  {
                                     this.state.grammarTestsVisible ? 
                                         <span> >> </span>
                                         : null
@@ -68,7 +75,7 @@ class AboutPage extends React.Component {
                         </div>
                         <div className="col-sm-6" id="grammar-tests">
                             {
-                                this.state.grammarTestsVisible ? <GrammarTests /> : null
+                                this.state.grammarTestsVisible ? <GrammarTestsConnect grammarTests={this.state.grammarTests} /> : null
                             }
                         </div>
                     </div>
@@ -80,5 +87,6 @@ class AboutPage extends React.Component {
 }
 
 
-export default AboutPage;
+export default connect()(AboutPage);
 
+// Separate AboutPage and GrammarTests into different pages so that I can export default AboutPage and export default CONNECT

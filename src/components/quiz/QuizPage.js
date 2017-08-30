@@ -23,7 +23,7 @@ QuizPage.propTypes = {
 
 function mapStateToProps(state, ownProps) {
     return {
-        quiz: ownProps.params.id
+        quiz: state.quiz
     };
 }
 

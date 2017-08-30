@@ -3,14 +3,21 @@ import {connect} from 'react-redux';
 import {partsOfSpeech} from '../../data/quizQuestions';
 import NewQuestions from './QuizNewQuestions';
 
-const QuizPage = ({quiz}) => {   
-    const questions = partsOfSpeech[quiz];
+const QuizPage = ({quiz}) => {
+    console.log('QUIZ: ', quiz);   
+    console.log('Object.keys(partsOfSpeech) 1: ', Object.keys(partsOfSpeech));
+    console.log('Object.keys(partsOfSpeech) 2: ', Object.keys(partsOfSpeech));
+
+    console.log('Object.keys(partsOfSpeech)[quiz] : ', Object.keys(partsOfSpeech)[quiz]);
+    const quizKey = Object.keys(partsOfSpeech)[quiz];
+    const questions = partsOfSpeech[quizKey];
+
     return (
 
         <div>
-            <h1 className="text-center">{quiz}</h1>
+            <h1 className="text-center">{quizKey}</h1>
             <div height="50px"></div>
-            <NewQuestions quiz={quiz} questions={questions}/>
+            <NewQuestions quiz={quizKey} questions={questions}/>
         </div> 
     );
 
@@ -22,8 +29,9 @@ QuizPage.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
+    console.log('ownProps: ', ownProps);
     return {
-        quiz: state.quiz
+        quiz: ownProps.routeParams.id
     };
 }
 

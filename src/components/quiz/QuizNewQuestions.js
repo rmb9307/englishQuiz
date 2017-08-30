@@ -65,6 +65,8 @@ export default class NewQuestions extends React.Component {
 
     randomQuestion() {
         //grabs 1 random question from array
+        console.log('this.props: ', this.props);
+        console.log('this.state: ', this.state);
         let question = this.props.questions[Math.floor(Math.random() * this.props.questions.length)];
         let idNum = Object.keys(question)[0];
 

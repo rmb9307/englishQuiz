@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-const QuizList = ({completedQuizzes}) => {
+const QuizList = ({ completedQuizzes }) => {
     return (
         <table className="table">
             <thead>

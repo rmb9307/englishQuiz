@@ -13,8 +13,8 @@ class SignupPage extends React.Component {
 
     handleSubmit(email, password) {
         this.props.dispatch(createUser({email, password}));
-        console.log('email: ', email, '\n', 'password: ', password);
     }
+
     render() {
         return (
             <div>
@@ -47,7 +47,7 @@ class SignupPage extends React.Component {
                                 <input className="btn btn-outline-secondary" type="submit"/>
                             </div>
                         </div>
-                    </form>     {/* Form onSubmit should send create requests to the database with email and password */}
+                    </form>    
 
                 </div>
             </div>
@@ -60,11 +60,3 @@ SignupPage.propTypes = {
 };
 
 export default connect()(SignupPage);
-
-
-// {evt => {
-//     evt.preventDefault();
-//     console.log('signup form submitted');
-//     console.log('this.props.signup: ', this.props.signup);
-//     this.props.signup(evt.target.email.value, evt.target.password.value);
-// }

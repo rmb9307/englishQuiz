@@ -23,8 +23,8 @@ export const logout = () => ({
 
 
 // Dispatchers:
-export const createUser = ({email, password}) => (dispatch) => {
-    axios.post('/api/user', { email, password })
+export const createUser = ({name, email, password}) => (dispatch) => {
+    axios.post('/api/user', { name, email, password })
     .then(response => {
         return response.data;
     })
@@ -32,6 +32,18 @@ export const createUser = ({email, password}) => (dispatch) => {
         dispatch(login(userEmail));
     })
     .catch(err => {
+        console.log(err);
+    });
+};
+
+export const getUser = (email) => (dispatch) =>  {
+    console.log('~~~~~~~~~~~getUser email: ', email);
+    const endpoint = '/api/user/' + email;
+    axios.get(endpoint)
+    .then(response => {
+        return response.data;
+    })
+    .catch(err=> {
         console.log(err);
     });
 };

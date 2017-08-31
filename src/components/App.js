@@ -1,6 +1,7 @@
 //used on every page
 import React, {PropTypes} from 'react';
 import Header from './common/Header';
+import CurrentUser from './common/CurrentUser';
 import {connect} from 'react-redux';
 
 class App extends React.Component {
@@ -10,6 +11,7 @@ class App extends React.Component {
                 <Header 
                     loading={this.props.loading}
                 />
+                <CurrentUser />
                 {this.props.children}
             </div>
         );

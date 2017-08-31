@@ -63,13 +63,13 @@ class AboutPage extends React.Component {
                             <h1>您想学什么?</h1>
                         </div>
                         <div className="col-sm-3" id="subject-list">
-                            <h4 className="practice-topic" onClick={() => this.handleClick()}> 测试你的语法知识  {
+                            <h4 className="hand-pointer" onClick={() => this.handleClick()}> 测试你的语法知识  {
                                     this.state.grammarTestsVisible ? 
                                         <span> >> </span>
                                         : null
                                 }</h4> 
                             <h4 className="practice-topic">惯用语法</h4>
-                            <h4 className="practice-topic">发音</h4>
+                            <h4 className="hand-pointer"> <Link to="pronunciation" style={{ textDecoration: 'none', color: 'black' }}> 发音 </Link> </h4>
                             <h4 className="practice-topic">听力</h4>
                             <h4 className="practice-topic">阅读</h4>
                         </div>
@@ -88,5 +88,3 @@ class AboutPage extends React.Component {
 
 
 export default connect()(AboutPage);
-
-// Separate AboutPage and GrammarTests into different pages so that I can export default AboutPage and export default CONNECT

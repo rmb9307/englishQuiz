@@ -10,7 +10,7 @@ export const signup = (email, password) => ({
     }
 });
 
-export const login = (email, password) => ({
+export const login = (email) => ({
     type: types.LOGIN,
     payload: {
         email
@@ -26,10 +26,10 @@ export const logout = () => ({
 export const createUser = ({email, password}) => (dispatch) => {
     axios.post('/api/user', { email, password })
     .then(response => {
-        response.data;
+        return response.data;
     })
-    .then(user => {
-        dispatch(login(user));
+    .then(userEmail => {
+        dispatch(login(userEmail));
     })
     .catch(err => {
         console.log(err);

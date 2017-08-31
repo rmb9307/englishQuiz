@@ -4,11 +4,6 @@ import {partsOfSpeech} from '../../data/quizQuestions';
 import NewQuestions from './QuizNewQuestions';
 
 const QuizPage = ({quiz}) => {
-    console.log('QUIZ: ', quiz);   
-    console.log('Object.keys(partsOfSpeech) 1: ', Object.keys(partsOfSpeech));
-    console.log('Object.keys(partsOfSpeech) 2: ', Object.keys(partsOfSpeech));
-
-    console.log('Object.keys(partsOfSpeech)[quiz] : ', Object.keys(partsOfSpeech)[quiz]);
     const quizKey = Object.keys(partsOfSpeech)[quiz];
     const questions = partsOfSpeech[quizKey];
 

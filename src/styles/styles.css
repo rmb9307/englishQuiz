@@ -20,6 +20,10 @@ h1 {
     font-size: 35px;
 }
 
+.hand-pointer {
+    cursor: pointer;
+}
+
 #homePage {
     justify-content: center;
     align-items: center;
@@ -44,6 +48,10 @@ p.signup-link {
 
 p.active {
     color: orange;
+}
+
+.small-text {
+    font-size: 11px;
 }
 
 .spacer {

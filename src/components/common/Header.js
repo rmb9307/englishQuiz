@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
+import { connect } from 'react-redux';
 import LoadingDots from './LoadingDots';
 
 const Header = ({loading}) => {
@@ -15,10 +16,9 @@ const Header = ({loading}) => {
     );
 };
 
-
 Header.propTypes = {
     loading: PropTypes.bool.isRequired,
     user: PropTypes.object
 };
 
-export default Header;
+export default connect()(Header);

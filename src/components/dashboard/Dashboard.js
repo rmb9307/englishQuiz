@@ -9,8 +9,7 @@ class Dashboard extends React.Component {
         super(props);
     }
 
-    componentWilllMount() {
-        console.log('componentWillMount, this.props.user: ', this.props.user);
+    componentWillMount() {
         this.fetchUser(this.props.user);
     }
 
@@ -19,12 +18,17 @@ class Dashboard extends React.Component {
     }
 
     render() {
-        console.log('this.props: ', this.props);
+        let name, completedQuizzes;
+        if (this.props.userData) {
+            name = this.props.userData.userData.name;
+            completedQuizzes = this.props.userData.userData.completedQuizzes
+        }
+        
         return (
             <div className="container-fluid">
                 <div className="spacer2"/>
                 <h2><b>帐户: </b>{this.props.user}</h2>
-                <p>名称: {} </p>
+                <p>名称: {name} </p>
                 <h4> 您已完成以下测验: </h4>
             </div>
         );

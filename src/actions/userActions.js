@@ -49,7 +49,6 @@ export const getUser = (email) => (dispatch) =>  {
         return response.data;
     })
     .then(data => {
-        console.log('getUser, data: ', data);
         dispatch(receiveUser(data));
     })
     .catch(err=> {

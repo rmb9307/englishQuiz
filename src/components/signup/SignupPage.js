@@ -11,8 +11,8 @@ class SignupPage extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit(email, password) {
-        this.props.dispatch(createUser({email, password}));
+    handleSubmit(name, email, password) {
+        this.props.dispatch(createUser({name, email, password}));
     }
 
     render() {
@@ -24,9 +24,16 @@ class SignupPage extends React.Component {
                     <h2> 注册 </h2>
                     <form id="signupForm" onSubmit={(event) => {
                             event.preventDefault();
-                            this.handleSubmit(event.target.email.value, event.target.password.value);
+                            this.handleSubmit(event.target.name.value, event.target.email.value, event.target.password.value);
                             browserHistory.push('/about');
                         }}>
+                        {/*Name input*/}
+                        <div className="row">
+                            <div className="col-xs-12">
+                                <input placeholder="名称" type="text" name="name" id="signupName"/>
+                            </div>
+                        </div>
+
                         {/*Email input*/}
                         <div className="row">
                             <div className="col-xs-12">

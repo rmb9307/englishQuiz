@@ -4,15 +4,12 @@ const Sequelize = require('sequelize');
 const db = require('../../db');
 
 
-const User = db.define('users', {
-    name: {
+const Task = db.define('tasks', {
+    title: {
         type: Sequelize.STRING
     },
-    email: {
-        type: Sequelize.STRING,
-        validate: {
-            isEmail: true
-        }
+    complete: {
+        type: Sequelize.BOOLEAN
     },
     password: {
         type: Sequelize.STRING
@@ -22,4 +19,4 @@ const User = db.define('users', {
     }
 });
 
-module.exports = User;
+module.exports = Task;

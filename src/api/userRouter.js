@@ -18,7 +18,6 @@ router.get('/:email', function(req,res,next){
     }})
     .then((result)=>{
       const user = result[0].dataValues;
-      console.log('result from /api/user GET: ', user);
       res.send(user);
     })
     .catch(next);

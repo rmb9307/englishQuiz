@@ -9,20 +9,22 @@ class Dashboard extends React.Component {
         super(props);
     }
 
-    componentWillMount() {
+    componentWilllMount() {
         console.log('componentWillMount, this.props.user: ', this.props.user);
         this.fetchUser(this.props.user);
     }
 
     fetchUser(email) {
-        const user = this.props.dispatch(getUser(email));
+        this.props.dispatch(getUser(email));
     }
 
     render() {
+        console.log('this.props: ', this.props);
         return (
             <div className="container-fluid">
                 <div className="spacer2"/>
-                <h2><b>帐户: </b>{this.props.user }</h2>
+                <h2><b>帐户: </b>{this.props.user}</h2>
+                <p>名称: {} </p>
                 <h4> 您已完成以下测验: </h4>
             </div>
         );
@@ -30,11 +32,13 @@ class Dashboard extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    user: state.user
+    user: state.user,
+    userData: state.userData
 });
 
 Dashboard.propTypes = {
-    user: PropTypes.string
+    user: PropTypes.string,
+    userData: PropTypes.object
 };
 
 

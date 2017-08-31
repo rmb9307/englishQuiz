@@ -21,6 +21,12 @@ export const logout = () => ({
     type: types.LOGOUT
 });
 
+export const receiveUser = (userData) => ({
+    type: types.RECEIVE_USER,
+    payload: {
+        userData
+    }
+});
 
 // Dispatchers:
 export const createUser = ({name, email, password}) => (dispatch) => {
@@ -37,11 +43,13 @@ export const createUser = ({name, email, password}) => (dispatch) => {
 };
 
 export const getUser = (email) => (dispatch) =>  {
-    console.log('~~~~~~~~~~~getUser email: ', email);
     const endpoint = '/api/user/' + email;
     axios.get(endpoint)
     .then(response => {
         return response.data;
+    })
+    .then(data => {
+        dispatch(receiveUser(data));
     })
     .catch(err=> {
         console.log(err);

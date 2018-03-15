@@ -16,14 +16,14 @@ class LoginPage extends React.Component {
                         {/*Email input*/}
                         <div className="row">
                             <div className="col-xs-12">
-                                <input placeholder="电子邮件地址"/>
+                                <input placeholder="电子邮件地址" type="text" />
                             </div>
                         </div>
                         
                         {/*Password input*/}
                         <div className="row">
                             <div className="col-xs-12">
-                                <input placeholder="密码"/>
+                                <input placeholder="密码" type="password" />
                             </div>
                         </div>
 

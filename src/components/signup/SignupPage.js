@@ -44,7 +44,7 @@ class SignupPage extends React.Component {
                         {/*Password input*/}
                         <div className="row">
                             <div className="col-xs-12">
-                                <input placeholder="密码" type="text" name="password" id="signupPassword" />
+                                <input placeholder="密码" type="password" name="password" id="signupPassword" />
                             </div>
                         </div>
 

@@ -1,11 +1,22 @@
 import React from 'react';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import { storeResult } from '../../actions/quizActions';
 // Passed in as props from NewQuestions: score={this.state.score}, outOf={this.state.outOf}, questions={this.props.questions}
 
-
-export default class QuizResult extends React.Component {
+class QuizResult extends React.Component {
     constructor(props) {
         super(props);
+    }
+    
+    storeResult() {
+        const score = this.props.score;
+        const outOf = this.props.outOf;
+        
+    }
+
+    componentDidMount() {
+        this.storeResult();
     }
 
     render() {
@@ -45,5 +56,7 @@ export default class QuizResult extends React.Component {
             </div> 
         );    
     }
-
 }
+
+
+export default connect()(QuizResult);

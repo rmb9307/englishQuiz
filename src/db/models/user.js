@@ -2,7 +2,7 @@
 
 const Sequelize = require('sequelize');
 const db = require('../../db');
-
+const Task = require('./Task');
 
 const User = db.define('users', {
     name: {
@@ -21,5 +21,8 @@ const User = db.define('users', {
         type: Sequelize.JSON
     }
 });
+
+Task.belongsTo(User);
+User.hasMany(Task);
 
 module.exports = User;

@@ -30,21 +30,21 @@ class SignupPage extends React.Component {
                         {/*Name input*/}
                         <div className="row">
                             <div className="col-xs-12">
-                                <input placeholder="名称" type="text" name="name" id="signupName"/>
+                                <input placeholder="名称" type="text" name="name" id="signupName" />
                             </div>
                         </div>
 
                         {/*Email input*/}
                         <div className="row">
                             <div className="col-xs-12">
-                                <input placeholder="电子邮件地址" type="text" name="email" id="signupEmail"/>
+                                <input placeholder="电子邮件地址" type="text" name="email" id="signupEmail" />
                             </div>
                         </div>
 
                         {/*Password input*/}
                         <div className="row">
                             <div className="col-xs-12">
-                                <input placeholder="密码" type="text" name="password" id="signupPassword"/>
+                                <input placeholder="密码" type="text" name="password" id="signupPassword" />
                             </div>
                         </div>
 

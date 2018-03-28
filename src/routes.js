@@ -12,11 +12,11 @@ import Dashboard from './components/dashboard/Dashboard';
 export default (
     <Route path="/" component={App}>
         <IndexRoute component={HomePage} />
-        <Route path="about" component={AboutPage} />
+        <Route path="/about" component={AboutPage} />
         <Route path="quiz/:id" component={QuizPage} />
-        <Route path="login" component={LoginPage} />
-        <Route path="signup" component={SignupPage} />
-        <Route path="pronunciation" component={PronunciationPage} />
-        <Route path="dashboard" component={Dashboard} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/signup" component={SignupPage} />
+        <Route path="/pronunciation" component={PronunciationPage} />
+        <Route path="/dashboard" component={Dashboard} />
     </Route>
 );

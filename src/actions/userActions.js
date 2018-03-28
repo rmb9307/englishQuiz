@@ -31,29 +31,30 @@ export const receiveUser = (userData) => ({
 });
 
 // Dispatchers:
-export const createUser = ({name, email, password}) => (dispatch) => {
+export const createUser = ({ name, email, password }) => (dispatch) => {
     axios.post('/api/user', { name, email, password })
-    .then(response => {
-        return response.data;
-    })
-    .then(userEmail => {
-        dispatch(login(userEmail));
-    })
-    .catch(err => {
-        console.log(err);
-    });
+        .then(response => {
+            return response.data;
+        })
+        .then(userEmail => {
+            dispatch(login(userEmail));
+        })
+        .catch(err => {
+            console.log(err);
+        });
 };
 
 export const getUser = (email) => (dispatch) =>  {
     const endpoint = '/api/user/' + email;
     axios.get(endpoint)
-    .then(response => {
-        return response.data;
-    })
-    .then(data => {
-        dispatch(receiveUser(data));
-    })
-    .catch(err=> {
-        console.log(err);
-    });
+        .then(response => {
+            return response.data;
+        })
+        .then(data => {
+            console.log('GET USER DATA:     ', data);
+            dispatch(receiveUser(data));
+        })
+        .catch(err => {
+            console.log(err);
+        });
 };

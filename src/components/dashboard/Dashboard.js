@@ -30,6 +30,14 @@ class Dashboard extends React.Component {
                 <h2><b>帐户: </b>{this.props.user}</h2>
                 <p>名称: {name} </p>
                 <h4> 您已完成以下测验: </h4>
+                {/*This will be a table populated with quiz names and the user's score*/}
+                <table>
+                    <tbody>
+                        {
+                            
+                        }
+                    </tbody>
+                </table>
             </div>
         );
     }

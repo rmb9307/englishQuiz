@@ -2,21 +2,24 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { storeResult } from '../../actions/quizActions';
+import axios from 'axios';
 // Passed in as props from NewQuestions: score={this.state.score}, outOf={this.state.outOf}, questions={this.props.questions}
 
 class QuizResult extends React.Component {
     constructor(props) {
         super(props);
     }
-    
-    storeResult() {
-        const score = this.props.score;
-        const outOf = this.props.outOf;
-        
-    }
 
     componentDidMount() {
-        this.storeResult();
+        this.storeQuizResult();
+    }
+
+    storeQuizResult() {
+        const task = this.props.quiz;
+        const score = this.props.score;
+        const outOf = this.props.outOf;
+        // step 1. store quiz results in database
+        storeResult({ task, score, outOf });
     }
 
     render() {
@@ -33,8 +36,8 @@ class QuizResult extends React.Component {
                 <h4>正确答案</h4>
                 <table>
                     <thead>
-                        <th width="515px">句子</th>
-                        <th>有什么{this.props.quiz}</th>
+                        <tr width="515px"><th>句子</th></tr>
+                        <tr><th>有什么{this.props.quiz}</th></tr>
                     </thead>
                     <tbody>
                         {

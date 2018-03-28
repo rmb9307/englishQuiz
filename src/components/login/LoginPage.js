@@ -13,7 +13,7 @@ class LoginPage extends React.Component {
     handleSubmit(email, password) {
         // call to database--> do email and password match?
         // yes? --> dispatch login, no? --> return error
-        this.props.dispatch(getUser(email));
+        this.props.dispatch(getUser({ email, password }));
     }
 
     render() {
@@ -26,7 +26,7 @@ class LoginPage extends React.Component {
                     <h2> 登录 </h2>
                     <form id="loginForm" onSubmit={event => {
                         event.preventDefault();
-                        this.handleSubmit(event.target.email.value);
+                        this.handleSubmit(event.target.email.value, event.target.password.value);
                         }}>
                         {/*Email input*/}
                         <div className="row">

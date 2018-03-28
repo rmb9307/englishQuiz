@@ -44,15 +44,18 @@ export const createUser = ({ name, email, password }) => (dispatch) => {
         });
 };
 
-export const getUser = (email) => (dispatch) =>  {
+export const getUser = ({ email, password }) => (dispatch) =>  {
     const endpoint = '/api/user/' + email;
     axios.get(endpoint)
         .then(response => {
             return response.data;
         })
         .then(data => {
+            // if the user data matches the password, login
             console.log('GET USER DATA:     ', data);
-            dispatch(receiveUser(data));
+            if(password === data.password) {
+                dispatch(login(data.email));
+            }
         })
         .catch(err => {
             console.log(err);

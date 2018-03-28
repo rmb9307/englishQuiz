@@ -11,7 +11,7 @@ console.log(chalk.yellow(`Opening database connection to ${url}`));
 
 // create the database instance
 const db = module.exports = new Sequelize(url, {
-  logging: debug 
+  logging: debug
 });
 
 // sync the db, creating it if necessary

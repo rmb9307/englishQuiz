@@ -5,14 +5,17 @@ const db = require('../../db');
 
 
 const Task = db.define('tasks', {
-    userID: {
+    userId: {
         type: Sequelize.INTEGER
     },
     title: {
         type: Sequelize.STRING
     },
-    complete: {
-        type: Sequelize.BOOLEAN
+    score: {
+        type: Sequelize.INTEGER
+    },
+    outOf: {
+        type: Sequelize.INTEGER
     }
 });
 

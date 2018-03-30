@@ -17,7 +17,7 @@ export function setQuiz(quiz) {
 
 
 export const storeResult = (task, score, outOf)  => {
-    console.log('quizActions > storeResult(task, score, outOf) has been called')
+    console.log('quizActions > storeResult(task, score, outOf) has been called');
     axios.post('/api/task', { task, score, outOf })
         .then(response => {
             return response.data;

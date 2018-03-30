@@ -16,7 +16,10 @@ const db = module.exports = new Sequelize(url, {
 
 // sync the db, creating it if necessary
 const sync = () => {
-  db.sync()
+  db.sync({
+    force: true,
+    forceSync: true
+  })
     .then(ok => console.log(`Synced models to db ${url}`))
     .catch(fail => {
       if (process.env.NODE_ENV === 'production') {

@@ -17,10 +17,8 @@ router.get('/:email', function(req,res,next){
       email: req.params.email 
     }})
     .then((result)=>{
-      if(!result[0]) {
-        res.status(404).send({
-          error: 'No account found for this email' 
-        });
+      if(result.length === 0) {
+        res.send(result);
       } else {
         const user = result[0].dataValues;
         res.send(user);

@@ -51,8 +51,12 @@ export const getUser = ({ email, password }) => (dispatch) =>  {
             return response.data;
         })
         .then(data => {
-            // if the user data matches the password, login
             console.log('GET USER DATA:     ', data);
+            // TODO: definitely hash the passwords
+            if(!data.length) {
+                // TODO: have this message display on the actual UI
+                console.log('No user found with this email');
+            }
             if(password === data.password) {
                 dispatch(login(data.email));
             }

@@ -4,10 +4,8 @@ const router = require('express').Router();
 const Task = require('../db/models/task');
 
 router.post('/', function(req,res,next){
-	console.log('POST to /task');
-  Task.create({ userId: req.body.userId, title: req.body.quiz, score: req.body.score, outOf: req.body.outOf })
+  Task.create({ userId: req.body.userId, title: req.body.task, score: req.body.score, outOf: req.body.outOf })
     .then(function(task){
-        console.log('task created: 		\n', task);
         res.send(task.dataValues);
     })
     .catch(next);

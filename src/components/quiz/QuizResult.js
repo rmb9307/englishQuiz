@@ -18,8 +18,8 @@ class QuizResult extends React.Component {
         const task = this.props.quiz;
         const score = this.props.score;
         const outOf = this.props.outOf;
-        // step 1. store quiz results in database
-        storeResult({ task, score, outOf });
+        console.log('task: ', task, 'score: ', score, 'outOf: ', outOf);
+        storeResult( task, score, outOf );
     }
 
     render() {

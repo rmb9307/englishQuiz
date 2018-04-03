@@ -15,6 +15,7 @@ class QuizResult extends React.Component {
     }
 
     storeQuizResult() {
+        console.log('\n     This.props: ', this.props, '\n      This.state: ', this.state);
         const task = this.props.quiz;
         const score = this.props.score;
         const outOf = this.props.outOf;
@@ -62,4 +63,10 @@ class QuizResult extends React.Component {
 }
 
 
-export default connect()(QuizResult);
+export default connect(
+    (state) => {
+        return {
+            user: state.user
+        };
+    }
+)(QuizResult);

@@ -51,7 +51,6 @@ export const getUser = ({ email, password }) => (dispatch) =>  {
             return response.data;
         })
         .then(data => {
-            console.log('GET USER DATA:     ', data);
             // TODO: definitely hash the passwords
             if(!data.length) {
                 // TODO: have this message display on the actual UI

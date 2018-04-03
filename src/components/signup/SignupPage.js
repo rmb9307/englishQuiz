@@ -66,4 +66,8 @@ SignupPage.propTypes = {
     signup: PropTypes.func
 };
 
-export default connect()(SignupPage);
+export default connect(state => {
+    return {
+        state: state
+    };
+})(SignupPage);

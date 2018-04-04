@@ -30,11 +30,8 @@ class Dashboard extends React.Component {
             const userData = this.props.userData.userData;
             name = userData.name;
             if (this.props.completeQuizzes) {
-                console.log('completeQuizzes? ', this.props.completeQuizzes);
-                this.props.completeQuizzes.forEach(quiz => {
-                    console.log('quiz: ', quiz);
-                });
-                completeQuizzes = this.props.completeQuizzes;
+                completeQuizzes = this.props.completeQuizzes[0];
+                console.log('\n \n Dashboard render function       --->     completeQuizes: \n \n', completeQuizzes);
             }
         }
         

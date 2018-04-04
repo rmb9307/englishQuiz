@@ -3,12 +3,12 @@
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-export default function quizReducer(state = initialState.quiz, action) {
+export default function completeQuizzesReducer(state = initialState.completeQuizzes, action) {
     switch(action.type) {
-        case types.SET_QUIZ:
+        case types.RECEIVE_COMPLETE_QUIZZES:
             return [
                 ...state,
-                Object.assign({}, action.payload.quiz)
+                Object.assign({}, action.payload.completeQuizzes)
             ];
         default:
             return state;

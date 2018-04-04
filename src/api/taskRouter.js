@@ -16,12 +16,10 @@ router.get('/:userId', function(req,res,next){
     where: {
       userId: req.params.userId 
     }})
-    .then((result)=>{
-      const task = result[0].dataValues;
-      res.send(task);
+    .then((result) => {
+      res.send(result);
     })
     .catch(next);
 });
-
 
 module.exports = router;

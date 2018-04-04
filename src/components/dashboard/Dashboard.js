@@ -1,8 +1,9 @@
 'use strict';
 
-import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { getUser } from '../../actions/userActions';
+import { getQuizzesByUser } from '../../actions/quizActions';
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -11,17 +12,30 @@ class Dashboard extends React.Component {
 
     componentWillMount() {
         this.fetchUser(this.props.user);
+        this.getQuizzes(this.props.user);
     }
 
     fetchUser(email) {
         this.props.dispatch(getUser(email));
     }
 
+    getQuizzes(email) {
+        this.props.dispatch(getQuizzesByUser(email));
+    }
+
     render() {
-        let name, completedQuizzes;
+        let name, completeQuizzes;
+        console.log('\n \n this.props: \n', this.props);
         if (this.props.userData) {
-            name = this.props.userData.userData.name;
-            completedQuizzes = this.props.userData.userData.completedQuizzes
+            const userData = this.props.userData.userData;
+            name = userData.name;
+            if (this.props.completeQuizzes) {
+                console.log('completeQuizzes? ', this.props.completeQuizzes);
+                this.props.completeQuizzes.forEach(quiz => {
+                    console.log('quiz: ', quiz);
+                });
+                completeQuizzes = this.props.completeQuizzes;
+            }
         }
         
         return (
@@ -45,12 +59,14 @@ class Dashboard extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     user: state.user,
-    userData: state.userData
+    userData: state.userData,
+    completeQuizzes: state.completeQuizzes
 });
 
 Dashboard.propTypes = {
     user: PropTypes.string,
-    userData: PropTypes.object
+    userData: PropTypes.object,
+    completeQuizzes: PropTypes.object
 };
 
 

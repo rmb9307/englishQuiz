@@ -3,5 +3,6 @@ export default {
     quiz: '',
     quizQuestions: [],
     user: null,
-    userData: null
+    userData: null,
+    completeQuizzes: []
 };

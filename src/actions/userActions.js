@@ -44,7 +44,7 @@ export const createUser = ({ name, email, password }) => (dispatch) => {
         });
 };
 
-export const getUser = ({ email, password }) => (dispatch) =>  {
+export const loginUser = ({ email, password }) => (dispatch) =>  {
     const endpoint = '/api/user/' + email;
     axios.get(endpoint)
         .then(response => {
@@ -59,6 +59,21 @@ export const getUser = ({ email, password }) => (dispatch) =>  {
             if(password === data.password) {
                 dispatch(login(data.email));
             }
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
+export const getUser = (email) => (dispatch) => {
+    const endpoint = '/api/user/' + email;
+    axios.get(endpoint)
+        .then(response => {
+            return response.data;
+        })
+        .then(data => {
+            console.log('\n______getUser data______ \n \n ', data);
+            dispatch(receiveUser(data));
         })
         .catch(err => {
             console.log(err);

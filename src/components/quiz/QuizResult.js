@@ -15,12 +15,11 @@ class QuizResult extends React.Component {
     }
 
     storeQuizResult() {
-        console.log('\n     This.props: ', this.props, '\n      This.state: ', this.state);
         const task = this.props.quiz;
         const score = this.props.score;
         const outOf = this.props.outOf;
-        console.log('task: ', task, 'score: ', score, 'outOf: ', outOf);
-        storeResult( task, score, outOf );
+        const user = this.props.user;
+        storeResult( task, score, outOf, user );
     }
 
     render() {

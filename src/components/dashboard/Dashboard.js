@@ -24,13 +24,16 @@ class Dashboard extends React.Component {
     }
 
     render() {
-        let name, completeQuizzes;
+        let name;
+        let completeQuizzes = [];
         console.log('\n \n this.props: \n', this.props);
         if (this.props.userData) {
             const userData = this.props.userData.userData;
             name = userData.name;
             if (this.props.completeQuizzes) {
-                completeQuizzes = this.props.completeQuizzes[0];
+                this.props.completeQuizzes.forEach(quiz => {
+                    completeQuizzes.push(quiz[0]);
+                });
                 console.log('\n \n Dashboard render function       --->     completeQuizes: \n \n', completeQuizzes);
             }
         }

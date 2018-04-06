@@ -21,7 +21,7 @@ export function receiveCompleteQuizzes (completeQuizzes) {
             completeQuizzes
         }
     };
-};
+}
 
 export const storeResult = (task, score, outOf, user)  => {
     let endpoint = '/api/user/' + user;

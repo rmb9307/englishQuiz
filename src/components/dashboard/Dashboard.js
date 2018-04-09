@@ -26,6 +26,7 @@ class Dashboard extends React.Component {
     render() {
         let name;
         let completeQuizzes = [];
+        let quizRows;
         console.log('\n \n this.props: \n', this.props);
         if (this.props.userData) {
             const userData = this.props.userData.userData;
@@ -35,6 +36,25 @@ class Dashboard extends React.Component {
                     completeQuizzes.push(quiz[0]);
                 });
                 console.log('\n \n Dashboard render function       --->     completeQuizes: \n \n', completeQuizzes);
+                // var Hello = React.createClass({
+                //     render: function() {
+                //         var names = ['Jake', 'Jon', 'Thruster'];
+                //         var namesList = names.map(function(name){
+                //                         return <li>{name}</li>;
+                //                       })
+                
+                //         return  <ul>{ namesList }</ul>
+                //     }
+                // });
+                quizRows = completeQuizzes.map(quiz => {
+                    return (
+                        <tr key={quiz.id}>
+                            <td>{quiz.title}</td>
+                            <td>{quiz.score}</td>
+                            <td>{quiz.outOf}</td>
+                        </tr>
+                    );
+                });
             }
         }
         
@@ -46,11 +66,12 @@ class Dashboard extends React.Component {
                 <h4> 您已完成以下测验: </h4>
                 {/*This will be a table populated with quiz names and the user's score*/}
                 <table>
-                    <tbody>
-                        {
-                            
-                        }
-                    </tbody>
+                        <thead>
+                            <th>测验</th>
+                            <th>分数</th>
+                            <th>总分</th>
+                        </thead>
+                        <tbody>{quizRows}</tbody>
                 </table>
             </div>
         );

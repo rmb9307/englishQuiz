@@ -7,28 +7,7 @@ import { Link, browserHistory } from 'react-router';
 import { partsOfSpeech } from '../../data/quizQuestions';
 import * as quizActions from '../../actions/quizActions';
 import _ from 'lodash';
-  
-const alphabet = [          // import this from db later on
-    'a', 'b', 'c', 'd',
-    'e', 'f', 'g', 'h',
-    'i', 'j', 'k', 'l',
-    'm', 'n', 'o', 'p',
-    'q', 'r', 's', 't',
-    'u', 'v', 'w', 'x',
-    'y', 'z'
-];
-
-const vowelCombos = [       // will add more and import from db
-    'oa', 'oe', 'ow', 'ie',
-    'ey', 'ay', 'ee', 'oo', 
-    'ou', 'ew', 'au', 'ough',
-    'eigh'
-];
-
-const consonantCombos = [   // will add more and import from db
-    'th', 'sh', 'ph', 'wh',
-    'ti', 'ch'
-];
+import {alphabet, vowelCombos, consonantCombos} from './constants/letters';
 
 let gridElements = _.chunk(
     [...alphabet, ...vowelCombos, ...consonantCombos],

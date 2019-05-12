@@ -36,7 +36,7 @@ let gridElements = _.chunk(
 );
 gridElements.forEach((rowContent, index) => {
     gridElements[index] = rowContent.map((cellText, index) => {
-        return <td key={index}>{cellText}</td>;
+        return <td key={index} className="hand-pointer">{cellText}</td>;
     });
 });
 gridElements = gridElements.map((rowContent, index) => {
@@ -55,11 +55,13 @@ class PronunciationPage extends React.Component {
         return (
             <div>
                 <h1> 发音 </h1>
-                <table className="sound-grid">
-                    <tbody>
-                        {gridElements}
-                    </tbody>
-                </table>
+                <div className="sound-grid-container">
+                    <table className="sound-grid">
+                        <tbody>
+                            {gridElements}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         );
     }

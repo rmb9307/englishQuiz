@@ -6,6 +6,7 @@ import {bindActionCreators} from 'redux';
 import { Link, browserHistory } from 'react-router';
 import { partsOfSpeech } from '../../data/quizQuestions';
 import * as quizActions from '../../actions/quizActions';
+import _ from 'lodash';
   
 const alphabet = [          // import this from db later on
     'a', 'b', 'c', 'd',
@@ -20,13 +21,31 @@ const alphabet = [          // import this from db later on
 const vowelCombos = [       // will add more and import from db
     'oa', 'oe', 'ow', 'ie',
     'ey', 'ay', 'ee', 'oo', 
-    'ou', 'ew', 'au', 'ough'
+    'ou', 'ew', 'au', 'ough',
+    'eigh'
 ];
 
 const consonantCombos = [   // will add more and import from db
     'th', 'sh', 'ph', 'wh',
     'ti', 'ch'
 ];
+
+let gridElements = _.chunk(
+    [...alphabet, ...vowelCombos, ...consonantCombos],
+    4
+);
+gridElements.forEach((rowContent, index) => {
+    gridElements[index] = rowContent.map((cellText, index) => {
+        return <td key={index}>{cellText}</td>;
+    });
+});
+gridElements = gridElements.map((rowContent, index) => {
+    return (
+        <tr key={`sound-grid-row-${index}`} className="sound-grid-row">
+        {rowContent}
+        </tr>
+    );
+});
 
 class PronunciationPage extends React.Component {
      constructor(props, context) {
@@ -35,21 +54,13 @@ class PronunciationPage extends React.Component {
 
     
     render() {
-        const alphabetRows = alphabet.forEach(letter => {
-            return <td>{letter}</td>;
-        });
-        const vowelRows = vowelCombos.forEach(combo => {
-            return <td>{combo}</td>;
-        });
-        const consonantRows = consonantCombos.forEach(combo => {
-            return <td>{combo}</td>;
-        });
         return (
             <div>
-                <h1> 听力 </h1>
-                <h4> (Add instructions on how to use) </h4>
-                <table>
-                    <tbody></tbody>
+                <h1> 发音 </h1>
+                <table className="sound-grid">
+                    <tbody>
+                        {gridElements}
+                    </tbody>
                 </table>
             </div>
         );

@@ -15,7 +15,7 @@ let gridElements = _.chunk(
 );
 gridElements.forEach((rowContent, index) => {
     gridElements[index] = rowContent.map((cellText, index) => {
-        return <td key={index} className="hand-pointer">{cellText}</td>;
+        return <td key={index} className="hand-pointer sound-grid-cell">{cellText}</td>;
     });
 });
 gridElements = gridElements.map((rowContent, index) => {

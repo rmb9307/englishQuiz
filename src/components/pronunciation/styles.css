@@ -11,5 +11,9 @@ table, th, td {
 }
     
 .sound-grid {
-    width: 75%;
+    width: 66%;
+}
+
+.sound-grid-cell {
+    height: 60px;
 }

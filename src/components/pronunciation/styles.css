@@ -1,0 +1,19 @@
+table, th, td {
+    border: 1px solid gray;
+    text-align: center;
+}
+
+.sound-grid-container {
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+    
+.sound-grid {
+    width: 66%;
+}
+
+.sound-grid-cell {
+    height: 60px;
+}
